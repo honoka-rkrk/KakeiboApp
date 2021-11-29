@@ -1,6 +1,7 @@
 import React from 'react';
 import {View,Text,StyleSheet,TextInput,ScrollView} from 'react-native';
 import CircleButton from '../../../Utils/components/circleButton';
+import {Feather} from '@expo/vector-icons';
 
 type BudgetEditProps = {
     onPress: () => void
@@ -25,8 +26,11 @@ const BudgetEdit:React.FC<BudgetEditProps> = (props:BudgetEditProps) => {
                     {/**---収入---*/}
                     <View>
                         <View style={styles.budgetCategoryIncome}>
-                            <Text style={styles.budgetCategoryTitle}>収入</Text>
-                            <Text style={styles.budgetCategorySum}>3000</Text>
+                            <View style={styles.budgetCategoryTitleSum}>
+                                <Text style={styles.budgetCategoryTitle}>収入</Text>
+                                <Text style={styles.budgetCategorySum}>3000</Text>
+                            </View>
+                            <Feather name="plus" size={16} color="rgba(255,255,255,0.6)" />
                         </View>
                         <View>
                             <View style={styles.budgetCategoryItem}>
@@ -48,8 +52,11 @@ const BudgetEdit:React.FC<BudgetEditProps> = (props:BudgetEditProps) => {
                     {/**---固定費---*/}
                     <View>
                         <View style={styles.budgetCategoryOutcome}>
-                            <Text style={styles.budgetCategoryTitle}>固定費</Text>
-                            <Text style={styles.budgetCategorySum}>3000</Text>
+                            <View style={styles.budgetCategoryTitleSum}>
+                                <Text style={styles.budgetCategoryTitle}>固定費</Text>
+                                <Text style={styles.budgetCategorySum}>3000</Text>
+                            </View>
+                            <Feather name="plus" size={16} color="rgba(255,255,255,0.6)" />
                         </View>
                         <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
@@ -69,8 +76,11 @@ const BudgetEdit:React.FC<BudgetEditProps> = (props:BudgetEditProps) => {
                     {/**---生活費---*/}
                     <View>
                         <View style={styles.budgetCategoryOutcome}>
-                            <Text style={styles.budgetCategoryTitle}>生活費</Text>
-                            <Text style={styles.budgetCategorySum}>3000</Text>
+                            <View style={styles.budgetCategoryTitleSum}>
+                                <Text style={styles.budgetCategoryTitle}>生活費</Text>
+                                <Text style={styles.budgetCategorySum}>3000</Text>
+                            </View>
+                            <Feather name="plus" size={16} color="rgba(255,255,255,0.6)" />
                         </View>
                         <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
@@ -120,6 +130,11 @@ const styles=StyleSheet.create({
         justifyContent:"space-between",
         paddingVertical:16,
         paddingHorizontal:19,
+        alignItems:"center",
+        flexDirection: "row",
+    },
+    budgetCategoryTitleSum:{
+        justifyContent:"space-between",
         alignItems:"center",
         flexDirection: "row",
     },
