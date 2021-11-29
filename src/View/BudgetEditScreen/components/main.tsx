@@ -15,7 +15,7 @@ type Props = {
 
 function Main({route,navigation}:Props){
     const onPress = () => {
-        navigation.navigate('Budget');
+        navigation.goBack();
     };
 
     return(

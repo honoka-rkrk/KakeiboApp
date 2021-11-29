@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Text,StyleSheet,TextInput} from 'react-native';
+import {View,Text,StyleSheet,TextInput,ScrollView} from 'react-native';
 import CircleButton from '../../../Utils/components/circleButton';
 
 type BudgetEditProps = {
@@ -18,25 +18,27 @@ const BudgetEdit:React.FC<BudgetEditProps> = (props:BudgetEditProps) => {
                 </View>
                 {/**---日付タイトルEnd--- */}
 
+            <ScrollView>
                 {/**---カテゴリ---*/}
                 <View>
 
                     {/**---収入---*/}
                     <View>
-                        <View style={styles.budgetCategory}>
-                            <Text>収入</Text>
+                        <View style={styles.budgetCategoryIncome}>
+                            <Text style={styles.budgetCategoryTitle}>収入</Text>
+                            <Text style={styles.budgetCategorySum}>3000</Text>
                         </View>
                         <View>
                             <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
-                                    <Text style={styles.budgetCategoryItemTitle}>収入１</Text>
-                                    <Text style={styles.budgetCategoryItemData}>１０００</Text>
+                                    <TextInput style={styles.budgetCategoryItemTitle} value={"収入１"} />
+                                    <TextInput style={styles.budgetCategoryItemData} value={"１０００"} />
                                 </View>
                             </View>
                             <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
-                                    <Text style={styles.budgetCategoryItemTitle}>収入２</Text>
-                                    <Text style={styles.budgetCategoryItemData}>２０００</Text>
+                                    <TextInput style={styles.budgetCategoryItemTitle} value={"収入２"} />
+                                    <TextInput style={styles.budgetCategoryItemData} value={"２０００"} />
                                 </View>
                             </View>
                         </View>
@@ -45,19 +47,20 @@ const BudgetEdit:React.FC<BudgetEditProps> = (props:BudgetEditProps) => {
 
                     {/**---固定費---*/}
                     <View>
-                        <View style={styles.budgetCategory}>
-                            <Text>固定費</Text>
+                        <View style={styles.budgetCategoryOutcome}>
+                            <Text style={styles.budgetCategoryTitle}>固定費</Text>
+                            <Text style={styles.budgetCategorySum}>3000</Text>
                         </View>
                         <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
-                                    <Text style={styles.budgetCategoryItemTitle}>固定費１</Text>
-                                    <Text style={styles.budgetCategoryItemData}>１０００</Text>
+                                    <TextInput style={styles.budgetCategoryItemTitle} value={"固定費１"} />
+                                    <TextInput style={styles.budgetCategoryItemData} value={"１０００"} />
                                 </View>
                             </View>
                             <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
-                                    <Text style={styles.budgetCategoryItemTitle}>固定費２</Text>
-                                    <Text style={styles.budgetCategoryItemData}>２０００</Text>
+                                    <TextInput style={styles.budgetCategoryItemTitle} value={"固定費２"} />
+                                    <TextInput style={styles.budgetCategoryItemData} value={"２０００"} />
                                 </View>
                             </View>
                     </View>
@@ -65,19 +68,20 @@ const BudgetEdit:React.FC<BudgetEditProps> = (props:BudgetEditProps) => {
 
                     {/**---生活費---*/}
                     <View>
-                        <View style={styles.budgetCategory}>
-                            <Text>生活費</Text>
+                        <View style={styles.budgetCategoryOutcome}>
+                            <Text style={styles.budgetCategoryTitle}>生活費</Text>
+                            <Text style={styles.budgetCategorySum}>3000</Text>
                         </View>
                         <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
-                                    <Text style={styles.budgetCategoryItemTitle}>生活費１</Text>
-                                    <Text style={styles.budgetCategoryItemData}>１０００</Text>
+                                    <TextInput style={styles.budgetCategoryItemTitle} value={"生活費１"} />
+                                    <TextInput style={styles.budgetCategoryItemData} value={"１０００"} />
                                 </View>
                             </View>
                             <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
-                                    <Text style={styles.budgetCategoryItemTitle}>生活費２</Text>
-                                    <Text style={styles.budgetCategoryItemData}>２０００</Text>
+                                    <TextInput style={styles.budgetCategoryItemTitle} value={"生活費２"} />
+                                    <TextInput style={styles.budgetCategoryItemData} value={"２０００"} />
                                 </View>
                             </View>
                     </View>
@@ -85,8 +89,9 @@ const BudgetEdit:React.FC<BudgetEditProps> = (props:BudgetEditProps) => {
 
                 </View>
                 {/**---カテゴリEnd---*/}
+            </ScrollView>
             </View>
-            <CircleButton name="edit-2" onPress={onPress} />
+            <CircleButton name="check" onPress={onPress} />
         </View>
     )
 }
@@ -102,12 +107,34 @@ const styles=StyleSheet.create({
         paddingHorizontal:19,
         alignItems:"center"
     },
-    budgetCategory:{
+    budgetCategoryIncome:{
+        backgroundColor:"#ffb344",
+        justifyContent:"space-between",
+        paddingVertical:16,
+        paddingHorizontal:19,
+        alignItems:"center",
+        flexDirection: "row",
+    },
+    budgetCategoryOutcome:{
         backgroundColor:"#e05d5d",
         justifyContent:"space-between",
         paddingVertical:16,
         paddingHorizontal:19,
-        alignItems:"center"
+        alignItems:"center",
+        flexDirection: "row",
+    },
+    budgetCategoryTitle:{
+        fontSize: 16,
+        lineHeight: 32,
+        color:'#ffffff',
+        paddingRight:19,
+    },
+    budgetCategorySum:{
+        backgroundColor:'#ffffff',
+        borderRadius:4,
+        fontSize: 16,
+        lineHeight: 32,
+        paddingHorizontal:19,
     },
     budgetCategoryItem:{
         flexDirection: "row",

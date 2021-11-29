@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import {View,Text,StyleSheet,TextInput} from 'react-native';
+import {View,Text,StyleSheet,ScrollView} from 'react-native';
 
 import CircleButton from '../../../Utils/components/circleButton';
 
@@ -21,6 +21,27 @@ const Budget:React.FC<BudgetProps> = (props:BudgetProps) => {
                 </View>
                 {/**---日付タイトルEnd--- */}
 
+            <ScrollView>
+                <View style={styles.calc}>
+                    <View style={styles.sumIncome}>
+                        <Text>収入</Text>
+                        <Text>3000</Text>
+                    </View>
+                    <View style={styles.sumOutcome}>
+                        <View style={styles.sumOutcomeItem}>
+                            <Text>固定費</Text>
+                            <Text>3000</Text>
+                        </View>
+                        <View style={styles.sumOutcomeItem}>
+                            <Text>生活費</Text>
+                            <Text>3000</Text>
+                        </View>
+                    </View>
+                    <View style={styles.difference}>
+                        <Text>差額</Text>
+                        <Text>3000</Text>
+                    </View>
+                </View>
                 {/**---カテゴリ---*/}
                 <View>
 
@@ -32,14 +53,14 @@ const Budget:React.FC<BudgetProps> = (props:BudgetProps) => {
                         <View>
                             <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
-                                    <TextInput style={styles.budgetCategoryItemTitle} value={"収入１"} />
-                                    <TextInput style={styles.budgetCategoryItemData} value={"１０００"} />
+                                    <Text style={styles.budgetCategoryItemTitle}>収入１</Text>
+                                    <Text style={styles.budgetCategoryItemData}>１０００</Text>
                                 </View>
                             </View>
                             <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
-                                    <TextInput style={styles.budgetCategoryItemTitle} value={"収入２"} />
-                                    <TextInput style={styles.budgetCategoryItemData} value={"２０００"} />
+                                    <Text style={styles.budgetCategoryItemTitle}>収入２</Text>
+                                    <Text style={styles.budgetCategoryItemData}>２０００</Text>
                                 </View>
                             </View>
                         </View>
@@ -53,14 +74,14 @@ const Budget:React.FC<BudgetProps> = (props:BudgetProps) => {
                         </View>
                         <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
-                                    <TextInput style={styles.budgetCategoryItemTitle} value={"固定費１"} />
-                                    <TextInput style={styles.budgetCategoryItemData} value={"１０００"} />
+                                    <Text style={styles.budgetCategoryItemTitle}>固定費１</Text>
+                                    <Text style={styles.budgetCategoryItemData}>１０００</Text>
                                 </View>
                         </View>
                         <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
-                                    <TextInput style={styles.budgetCategoryItemTitle} value={"固定費２"} />
-                                    <TextInput style={styles.budgetCategoryItemData} value={"２０００"} />
+                                    <Text style={styles.budgetCategoryItemTitle}>固定費２</Text>
+                                    <Text style={styles.budgetCategoryItemData}>２０００</Text>
                                 </View>
                         </View>
                     </View>
@@ -73,14 +94,14 @@ const Budget:React.FC<BudgetProps> = (props:BudgetProps) => {
                         </View>
                         <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
-                                    <TextInput style={styles.budgetCategoryItemTitle} value={"生活費１"} />
-                                    <TextInput style={styles.budgetCategoryItemData} value={"１０００"} />
+                                    <Text style={styles.budgetCategoryItemTitle}>生活費１</Text>
+                                    <Text style={styles.budgetCategoryItemData}>１０００</Text>
                                 </View>
                         </View>
                         <View style={styles.budgetCategoryItem}>
                                 <View style={styles.budgetCategoryItemInner}>
-                                    <TextInput style={styles.budgetCategoryItemTitle} value={"生活費２"} />
-                                    <TextInput style={styles.budgetCategoryItemData} value={"２０００"} />
+                                    <Text style={styles.budgetCategoryItemTitle}>生活費２</Text>
+                                    <Text style={styles.budgetCategoryItemData}>２０００</Text>
                                 </View>
                         </View>
                     </View>
@@ -88,8 +109,9 @@ const Budget:React.FC<BudgetProps> = (props:BudgetProps) => {
 
                 </View>
                 {/**---カテゴリEnd---*/}
+            </ScrollView>
             </View>
-            <CircleButton name="check" onPress={onPress} />
+            <CircleButton name="edit-2" onPress={onPress} />
         </View>
     )
 }
@@ -97,6 +119,37 @@ const Budget:React.FC<BudgetProps> = (props:BudgetProps) => {
 const styles=StyleSheet.create({
     container:{
         flex: 1,
+    },
+    calc:{
+        flexDirection: "row",
+        justifyContent:"space-between",
+        paddingVertical:16,
+        paddingHorizontal:19,
+        alignItems:"center"
+    },
+    sumIncome:{
+        backgroundColor:"#ffb344",
+        paddingVertical:16,
+        paddingHorizontal:19,
+        borderRadius:4,
+        textAlign:'center',
+    },
+    sumOutcome:{
+        backgroundColor:"#e05d5d",
+        borderRadius:4,
+        flexDirection:'row',
+        textAlign:'center',
+    },
+    sumOutcomeItem:{
+        paddingVertical:16,
+        paddingHorizontal:19,
+    },
+    difference:{
+        backgroundColor:"#00A19D",
+        paddingVertical:16,
+        paddingHorizontal:19,
+        borderRadius:4,
+        textAlign:'center',
     },
     budgetMonth:{
         backgroundColor:"#00A19D",
@@ -106,7 +159,7 @@ const styles=StyleSheet.create({
         alignItems:"center"
     },
     budgetCategory:{
-        backgroundColor:"#e05d5d",
+        backgroundColor:"#00A19D",
         justifyContent:"space-between",
         paddingVertical:16,
         paddingHorizontal:19,
