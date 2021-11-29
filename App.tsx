@@ -2,19 +2,28 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator,CardStyleInterpolators } from '@react-navigation/stack';
 import { StyleSheet, Text, View } from 'react-native';
-import LoginScreen from './src/LoginScreen/components/main';
-import SignUpScreen from './src/LoginScreen/SignUpScreen/components/main';
+import LoginScreen from './src/View/LoginScreen/components/main';
+import SignUpScreen from './src/View/SignUpScreen/components/main';
+import Budget from './src/View/BudgetScreen/components/main';
+import BudgetEdit from './src/View/BudgetEditScreen/components/main';
 
-const Stack=createStackNavigator();
+export type RootStackParamList = {
+  Budget:undefined;
+  BudgetEdit:undefined;
+  LogIn:undefined,
+  SignUp:undefined,
+};
+
+const Stack=createStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="BudgetEdit"
         screenOptions={
           {
-            headerStyle:{backgroundColor:'#467FD3'},
+            headerStyle:{backgroundColor:'#00A19D'},
             headerTitleStyle:{color:'#ffffff'},
             headerTitle: 'Memo App',
             headerTintColor:'#ffffff',
@@ -25,6 +34,8 @@ export default function App() {
           }
         }
         >
+          <Stack.Screen name="Budget" component = {Budget}/>
+          <Stack.Screen name="BudgetEdit" component={BudgetEdit} />
           <Stack.Screen name="LogIn" component={LoginScreen} options={{
             cardStyleInterpolator:CardStyleInterpolators.forFadeFromBottomAndroid,
           }}/>
